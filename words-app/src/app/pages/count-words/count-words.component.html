@@ -1,0 +1,16 @@
+<nz-card nzTitle="How many times a word appears in the text?">
+    <textarea [(ngModel)]="userText" nz-input  placeholder="Write here!" nzAutosize></textarea>
+    <button (click)="onProcess()" nz-button nzType="primary">Let the magic happen</button>
+    <cdk-virtual-scroll-viewport itemSize="73" class="demo-infinite-container" *ngIf="wordsMap.size"> 
+      <nz-list class="list" nzBordered>
+        <nz-list-item>
+          <span nz-typography><mark>Word</mark></span>
+          Appearences
+        </nz-list-item>
+        <nz-list-item *ngFor="let item of wordsMap | keyvalue">
+          <span nz-typography><mark>{{ displayKey(item.key) }}</mark></span>
+          <nz-badge nzStandalone [nzCount]="item.value" [nzStyle]="{ backgroundColor: '#52c41a' }"></nz-badge>
+        </nz-list-item>
+      </nz-list>
+    </cdk-virtual-scroll-viewport>
+</nz-card>  
